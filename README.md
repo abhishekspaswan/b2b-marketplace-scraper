@@ -1,10 +1,11 @@
 # B2B Marketplace Scraper & EDA
 
-![Colab Badge](https://colab.research.google.com/assets/colab-badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/abhishekspaswan/b2b-marketplace-scraper/blob/main/B2B_marketplaces.ipynb) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/downloads/)
 
 End-to-end project scraping and analyzing data from IndiaMART Export (B2B marketplace). Focuses on 3 product categories: **Industrial Machinery (CNC Machines)**, **Electronics (Mobile Phone Accessories)**, and **Textiles Machinery**. Uses pre-fetched real data (30 listings) for robustness and ethics—avoids live scraping blocks while demonstrating ETL + EDA.
 
 ## Overview
+
 - **Part A (Data Collection)**: Manually fetched 30 listings (USD prices, company details, export locations) from IndiaMART's export portal. Structured as JSON/CSV for modularity.
 - **Part B (Exploratory Data Analysis)**: Pandas for stats, Seaborn/Matplotlib for visuals. Uncovers price distributions, regional trends (USA dominance), and keyword patterns.
 - **Key Insights** (from EDA):
@@ -14,6 +15,7 @@ End-to-end project scraping and analyzing data from IndiaMART Export (B2B market
   - **Anomalies/Gaps**: ~7% null prices (quote-only); no ratings (future: Profile scraping). 28/30 records clean post-ETL.
 
 ## Project Structure
+
 ```
 b2b-marketplace-scraper/
 ├── B2B_marketplaces.ipynb          # Runnable notebook: Data load + full EDA
@@ -24,19 +26,22 @@ b2b-marketplace-scraper/
 ```
 
 ## Files
-- **`B2B_marketplaces.ipynb`**: Core notebook. Loads data, runs stats/visuals. Outputs CSVs/PNG.
-- **`scraped_data.csv/json`**: Raw exports (product_name, price, company, location list, url).
-- **`scraped_data_clean.csv`**: Processed (dropped nulls, numeric conversions).
-- **`full_eda_visuals.png`**: Combined plots: Price boxplots by category, export bars, keyword trends, correlations.
 
-Sample Data Preview (Cleaned CSV head):
-| category                | product_name                          | price   | company                          | location                  | url                                      |
-|-------------------------|---------------------------------------|---------|----------------------------------|---------------------------|------------------------------------------|
-| CNC Machine             | Best In Class CNC Machines            | 21560.77| Monotech Engineers Private Limited| ['USA', 'Nepal', 'Sri Lanka']| https://export.indiamart.com/...id=...  |
-| CNC Machine             | Nesting CNC Router Machine            | 23807.63| Jai Industries                   | ['USA', 'Nepal', 'Sri Lanka']| https://export.indiamart.com/...id=...  |
-| Mobile Phone Accessories| Metal Embossed Mobile Phone...        | 5.67    | Ravi Exports                     | ['USA', 'UK', 'Canada']    | https://export.indiamart.com/...id=...  |
+- **B2B_marketplaces.ipynb**: Core notebook. Loads data, runs stats/visuals. Outputs CSVs/PNG.
+- **scraped_data.csv/json**: Raw exports (product_name, price, company, location list, url).
+- **scraped_data_clean.csv**: Processed (dropped nulls, numeric conversions).
+- **full_eda_visuals.png**: Combined plots: Price boxplots by category, export bars, keyword trends, correlations.
+
+## Sample Data Preview (Cleaned CSV head)
+
+| category                 | product_name                   |    price | company                            | location                      | url                                              |
+|:-------------------------|:-------------------------------|---------:|:-----------------------------------|:------------------------------|:-------------------------------------------------|
+| CNC Machine              | Best In Class CNC Machines     | 21560.8  | Monotech Engineers Private Limited | ['USA', 'Nepal', 'Sri Lanka'] | https://export.indiamart.com/...id=2855667963388 |
+| CNC Machine              | Nesting CNC Router Machine     | 23807.6  | Jai Industries                     | ['USA', 'Nepal', 'Sri Lanka'] | https://export.indiamart.com/...id=23025032530   |
+| Mobile Phone Accessories | Metal Embossed Mobile Phone... |     5.67 | Ravi Exports                       | ['USA', 'UK', 'Canada']       | https://export.indiamart.com/...id=2854190341788 |
 
 ## How to Run
+
 ### In Google Colab (Recommended)
 1. Open [B2B_marketplaces.ipynb](https://colab.research.google.com/github/abhishekspaswan/b2b-marketplace-scraper/blob/main/B2B_marketplaces.ipynb).
 2. Run all cells (Runtime > Run all)—no extra setup.
@@ -53,12 +58,14 @@ Sample Data Preview (Cleaned CSV head):
 - Files: Updated CSVs/JSON + PNG with 9 plots (e.g., violin densities, scatter correlations).
 
 ## Tech Stack
+
 - **Language**: Python 3.12.
 - **Data**: Pandas (ETL, stats).
 - **Visuals**: Matplotlib/Seaborn (9 charts: boxplots, bars, violins, pie, heatmap).
 - **Ethics**: Pre-fetched (manual export)—respects ToS; limited to top results per category.
 
 ## Challenges & Extensions
+
 - **Robustness**: Pre-fetch handles 403 blocks; modular class for live scraping (add Selenium).
 - **Creativity**: 3 categories for multi-faceted analysis; keyword mining via regex/Counter.
 - **Future**:
